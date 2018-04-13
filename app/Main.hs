@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Oko
 
 main :: IO ()
 main = someFunc
