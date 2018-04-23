@@ -23,11 +23,33 @@ lexeme = L.lexeme sc
 symbol :: String -> Parser String
 symbol = L.symbol sc
 
-word :: Parser String
-word = many alphaNumChar <* sc
+identifier :: Parser String
+identifier = lexeme $ (:) <$> letterChar <*> many alphaNumChar
+
+value :: Parser String
+value = lexeme $ many latin1Char
 
 assignOper :: Parser String
 assignOper = lexeme $ symbol "="
 
+condAssignOper :: Parser String
+condAssignOper = lexeme $ symbol "?="
+
 assign :: Parser Assignment
-assign = Assign <$> word <*> (assignOper *> word)
+assign = condAssign
+         <|> simpleAssign
+
+simpleAssign :: Parser Assignment
+simpleAssign = try $ lexeme $ Assign <$> identifier <*> (assignOper *> value)
+
+condAssign :: Parser Assignment
+condAssign = try $ lexeme $ CondAssign <$> identifier <*> (condAssignOper *> value)
+
+arg :: Parser String
+arg = lexeme $ char '$' *> some alphaNumChar
+
+command :: Parser String
+command = space1 *> takeWhile1P (Just "Command") (/= '\n') <* try eol
+
+recipe :: Parser Recipe
+recipe = try $ Recipe <$> identifier <*> many arg <* char ':' <*> many command

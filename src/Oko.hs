@@ -1,9 +1,10 @@
 module Oko
-    ( someFunc
+    ( tmpMain
     ) where
 
 import Oko.Lexer
 import Oko.Types
+import Text.Megaparsec
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+tmpMain :: IO ()
+tmpMain = putStrLn "coming soon :)"
