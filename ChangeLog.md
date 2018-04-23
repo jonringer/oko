@@ -1,3 +1,3 @@
-# Changelog for simply
+# Changelog for oko
 
 ## Unreleased changes
