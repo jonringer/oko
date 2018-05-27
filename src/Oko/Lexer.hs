@@ -1,10 +1,8 @@
 module Oko.Lexer where
 
-import Control.Monad (void)
 import Data.Void
 import Text.Megaparsec
 import Text.Megaparsec.Char
-import Text.Megaparsec.Expr
 import qualified Text.Megaparsec.Char.Lexer as L
 
 import Oko.Types
@@ -30,10 +28,10 @@ value :: Parser String
 value = lexeme $ many latin1Char
 
 assignOper :: Parser String
-assignOper = lexeme $ symbol "="
+assignOper = symbol "="
 
 condAssignOper :: Parser String
-condAssignOper = lexeme $ symbol "?="
+condAssignOper = symbol "?="
 
 assign :: Parser Assignment
 assign = condAssign

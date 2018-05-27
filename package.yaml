@@ -19,12 +19,16 @@ category:            CLI
 # common to point users to the README.md file.
 description:         Please see the README on Github at <https://github.com/jonringer/oko#readme>
 
+default-extensions:
+- OverloadedStrings
+
 dependencies:
 - base >= 4.7 && < 5
 - text
 - bytestring
 - megaparsec
 - ansi-terminal
+- system-filepath
 
 library:
   source-dirs: src

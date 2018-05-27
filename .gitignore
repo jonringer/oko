@@ -2,3 +2,5 @@
 oko.cabal
 .vscode/
 *~
+ghcid.txt
+.ghci
