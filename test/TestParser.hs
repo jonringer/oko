@@ -6,7 +6,6 @@ import Text.Megaparsec
 
 import Oko.Types
 import Oko.Lexer
-import FindFile
 
 testParser =
     describe "Oko.Lexer" $ do
@@ -24,9 +23,11 @@ testParser =
                 parse assign "" "x?= HELLO" `shouldParse` CondAssign "x" "HELLO"
 
         describe "Recipe" $ do
-            it "parses recipes with no args" $
-                parse recipe "" "someRecipe:\n echo \"hello\"\n" `shouldParse` Recipe "someRecipe" [] ["echo \"hello\""]
+            it "parses recipes with no args" $ do
+                let actual   = parse recipe "" "someRecipe:\n echo \"hello\"\n" 
+                    expected = Recipe "someRecipe" [] ["echo \"hello\""]
+                actual `shouldParse` expected
             it "parses recipes with args" $ do
-                let actual = parse recipe "" "someRecipe $a $b:\n echo \"hello\"\n"
+                let actual   = parse recipe "" "someRecipe $a $b:\n echo \"hello\"\n"
                     expected = Recipe "someRecipe" ["a", "b"] ["echo \"hello\""]
                 actual `shouldParse` expected

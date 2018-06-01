@@ -17,4 +17,4 @@ findFileTest =
                 actual !! 2 `shouldBe` fromText "/some/really/long/"
                 actual !! 3 `shouldBe` fromText "/some/really/"
                 actual !! 4 `shouldBe` fromText "/some/"
-          
+                            
