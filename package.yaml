@@ -29,6 +29,7 @@ dependencies:
 - megaparsec
 - ansi-terminal
 - system-filepath
+- optparse-applicative
 
 library:
   source-dirs: src

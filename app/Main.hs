@@ -1,6 +1,13 @@
 module Main where
 
-import Oko
+import OkoCLI
+import Options.Applicative
+import Data.Semigroup((<>))
 
 main :: IO ()
-main = tmpMain
+main = print =<< execParser opts
+    where
+        opts = info (okoOpts <**> helper)
+                (  fullDesc
+                <> progDesc "Command Runner"
+                <> header "Easy to use command runner" )
