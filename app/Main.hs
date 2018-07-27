@@ -5,7 +5,7 @@ import Options.Applicative
 import Data.Semigroup((<>))
 
 main :: IO ()
-main = print =<< execParser opts
+main = print =<< customExecParser (prefs showHelpOnEmpty) opts
     where
         opts = info (okoOpts <**> helper)
                 (  fullDesc
