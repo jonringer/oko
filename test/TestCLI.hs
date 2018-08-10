@@ -29,6 +29,7 @@ testCLI = do
         describe "COMMAND" $ do
             it "parses it in happy case" $ do
                 p ["something"] `shouldParse` Command ["something"]
+                p ["something","with","lots"] `shouldParse` Command ["something","with","lots"]
         describe "multiple arguments" $ do
             it "fails when multiple options are given" $ do
                 shouldFailParse $ p ["--summary","--list"] 
