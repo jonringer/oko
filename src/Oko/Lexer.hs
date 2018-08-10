@@ -25,7 +25,7 @@ identifier :: Parser String
 identifier = lexeme $ (:) <$> letterChar <*> many alphaNumChar
 
 value :: Parser String
-value = lexeme $ many latin1Char
+value = lexeme $ takeWhile1P (Just "none-empty value") (/= '\n')
 
 assignOper :: Parser String
 assignOper = symbol "="
@@ -51,3 +51,8 @@ command = space1 *> takeWhile1P (Just "Command") (/= '\n') <* try eol
 
 recipe :: Parser Recipe
 recipe = try $ Recipe <$> identifier <*> many arg <* char ':' <*> many command
+
+commandFile :: Parser CommandFile
+commandFile = many $ do
+                Left <$> assign
+                <|> Right <$> recipe

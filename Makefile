@@ -10,3 +10,5 @@ test:
 ghcid:
 	ghcid -c=stack ghci test/Spec.hs -T=main
 
+run:
+	stack exec oko-exe
