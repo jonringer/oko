@@ -8,3 +8,4 @@ main :: IO ()
 main = hspec $ do
     findFileTest
     testParser
+    testCLI
