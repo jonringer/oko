@@ -12,16 +12,16 @@ testParser =
         describe "Assignment" $ do
             it "can parse a simple assignment" $ do
                 parse assign "" "x = 3" `shouldParse` Assign "x" "3"
-                parse assign "" "x=3" `shouldParse` Assign "x" "3"
-                parse assign "" "x =3" `shouldParse` Assign "x" "3"
-                parse assign "" "x= 3" `shouldParse` Assign "x" "3"
+                parse assign "" "x=3"   `shouldParse` Assign "x" "3"
+                parse assign "" "x =3"  `shouldParse` Assign "x" "3"
+                parse assign "" "x= 3"  `shouldParse` Assign "x" "3"
                 parse assign "" "x=3\n" `shouldParse` Assign "x" "3"
 
             it "can parse a conditional assimgnet" $ do
                 parse assign "" "x ?= HELLO" `shouldParse` CondAssign "x" "HELLO"
-                parse assign "" "x?=HELLO" `shouldParse` CondAssign "x" "HELLO"
-                parse assign "" "x ?=HELLO" `shouldParse` CondAssign "x" "HELLO"
-                parse assign "" "x?= HELLO" `shouldParse` CondAssign "x" "HELLO"
+                parse assign "" "x?=HELLO"   `shouldParse` CondAssign "x" "HELLO"
+                parse assign "" "x ?=HELLO"  `shouldParse` CondAssign "x" "HELLO"
+                parse assign "" "x?= HELLO"  `shouldParse` CondAssign "x" "HELLO"
 
         describe "Recipe" $ do
             it "parses recipes with no args" $ do
