@@ -1,0 +1,6 @@
+
+build:
+  stack build
+
+push:
+  git push

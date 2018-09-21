@@ -26,10 +26,11 @@ dependencies:
 - base >= 4.7 && < 5
 - text
 - bytestring
-- megaparsec
+- megaparsec >= 7.0.0 && < 7.1
 - ansi-terminal
 - system-filepath
 - optparse-applicative
+- directory
 
 library:
   source-dirs: src

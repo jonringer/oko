@@ -13,13 +13,13 @@ okoList :: Parser OkoOptions
 okoList = List <$> switch
                     (  long  "list"
                     <> short 'l'
-                    <> help  "List available commands.")
+                    <> help  "List names only of available commands.")
 
 okoSummary :: Parser OkoOptions
 okoSummary = Summary <$> switch
                      (  long  "summary"
                      <> short 's'
-                     <> help  "List names of available commands.")
+                     <> help  "List information of available commands.")
 
 okoCommand :: Parser OkoOptions
 okoCommand = Command <$> some (argument str (metavar "COMMAND ARGS.."))
